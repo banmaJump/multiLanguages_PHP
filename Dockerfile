@@ -17,15 +17,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends cron
 RUN echo "* * * * * root /usr/sbin/apache2ctl restart" >> /etc/cron.d/apache-restart
 
 # ApacheのDocumentRootを設定
-<VirtualHost *:80>
-    DocumentRoot /var/www/html/public
-    <Directory /var/www/html/public/>
-        AllowOverride All
-    </Directory>
-</VirtualHost>
-RUN a2ensite default
+RUN sed -i 's!DocumentRoot /var/www/html!DocumentRoot /var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's!<Directory /var/www/html/>!<Directory /var/www/html/public/>!g' /etc/apache2/sites-available/000-default.conf
+RUN a2ensite 000-default
 RUN a2dissite 000-default
-RUN echo "<VirtualHost *:80>\n    DocumentRoot /var/www/html/public\n    <Directory /var/www/html/public/>\n        AllowOverride All\n    </Directory>\n</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
 RUN a2ensite 000-default
 
 # コンテナ起動時のコマンド (Apacheをフォアグラウンドで実行)
