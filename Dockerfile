@@ -6,6 +6,9 @@ WORKDIR /var/www/html
 # アプリケーションのソースコードをコンテナにコピー
 COPY . /var/www/html/
 
+# 必要なパッケージをインストール (zlib は GD の依存関係)
+RUN apt-get update && apt-get install -y --no-install-recommends zlib1g-dev
+
 # 必要なPHP拡張機能をインストール (例: MySQL, GD)
 RUN docker-php-ext-install pdo pdo_mysql gd
 
