@@ -1,0 +1,15 @@
+#language-tabs {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.lang-tab {
+    padding: 4px 10px;
+    color: #333;
+}
+
+.lang-tab.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
