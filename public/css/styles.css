@@ -1,15 +1,154 @@
+body {
+    margin: 0;
+}
+
+.wrapper {
+    padding: 5%;
+}
+
+.comment h1 {
+    text-align: left;
+    margin: 0;
+}
+
+.comment h2 {
+    display: none;
+}
+
+.vertical {
+    padding: 5% 10%;
+    gap: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.introImg {
+    margin-left: auto;
+}
+
+#main-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* lang-select */
+.ltb {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #language-tabs {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 5px 0 13px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
 }
 
 .lang-tab {
-    padding: 4px 10px;
+    position: relative;
+    padding: 8px 12px;
+    font-size: 1rem;
+    text-decoration: none;
     color: #333;
+    transition: color 0.3s;
+    overflow: hidden;
+}
+
+.lang-tab::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: #3498db;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.lang-tab:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.lang-tab.active::before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .lang-tab.active {
     font-weight: bold;
-    text-decoration: underline;
+    color: #3498db;
 }
+
+.footer {
+    background-color: #333;
+    padding: 23% 20%;
+    color: white;
+}
+
+.footer h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.homePages {
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+.homePages li {
+    list-style-type: none;
+    color: white;
+    font-style: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.homePages li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+
+/*/ レスポンシブ対応////////////////////////////////////////////////////////////////////////*/
+
+/* タブレット向けのスタイル */
+@media screen and (max-width: 900px) {
+    .wrapper {
+        padding: 5% 10% 15%;
+    }
+
+    .comment h1 {
+        display: none;
+    }
+
+    .comment h2 {
+        display: block;
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    .vertical {
+        display: block;
+        padding-top: 0%;
+    }
+
+    .footer {
+        padding: 15% 20%;
+    }
+}
+
+/* スマホサイズ　*/
+@media screen and (max-width: 600px) {}
