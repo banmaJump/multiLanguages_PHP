@@ -1,8 +1,16 @@
 body {
     margin: 0;
+    background-color: white;
+}
+
+.container {
+    background-color: #333;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .wrapper {
+    background-color: white;
     padding: 5%;
 }
 
@@ -53,7 +61,7 @@ body {
 .lang-tab {
     position: relative;
     padding: 8px 12px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-decoration: none;
     color: #333;
     transition: color 0.3s;
@@ -90,27 +98,31 @@ body {
 
 .footer {
     background-color: #333;
-    padding: 23% 20%;
+    padding: 23% 0%;
     color: white;
 }
 
 .footer h1 {
-    font-size: 1.5rem;
+    font-size: 2.4rem;
     text-align: center;
 }
 
 .homePages {
     display: grid;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    text-align: left;
+}
+
+.homePages ul {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
 }
 
 .homePages li {
+    font-size: 1.6rem;
     list-style-type: none;
     color: white;
-    font-style: none;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -125,9 +137,13 @@ body {
 /*/ レスポンシブ対応////////////////////////////////////////////////////////////////////////*/
 
 /* タブレット向けのスタイル */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 830px) {
+    body {
+        background-color: #DBE6E0;
+    }
+
     .wrapper {
-        padding: 5% 10% 15%;
+        padding: 5% 0% 15%;
     }
 
     .comment h1 {
@@ -146,9 +162,60 @@ body {
     }
 
     .footer {
-        padding: 15% 20%;
+        padding: 25% 0%;
+    }
+
+    .foo-h1 {
+        margin-bottom: 5%;
+        font-size: 1.8rem;
+    }
+
+    .footer h1 {
+        font-size: 1.8rem;
+    }
+
+    .lang-tab::before {
+        background-color: orange;
+    }
+
+    .lang-tab {
+        font-size: 1.5rem;
+    }
+
+    .lang-tab.active {
+        color: orange;
+    }
+
+    .con-l {
+        font-size: 30px;
     }
 }
 
 /* スマホサイズ　*/
-@media screen and (max-width: 600px) {}
+@media screen and (max-width: 480px) {
+    body {
+        background-color: aliceblue;
+    }
+
+    .footer {
+        padding: 15% 0%;
+    }
+
+    .foo-h1 {
+        margin-bottom: 15%;
+    }
+
+    .homePages li {
+        font-size: 1.1rem;
+        border-bottom: 2px solid;
+        margin-bottom: 30px;
+    }
+
+    .footer {
+        padding: 30% 0;
+    }
+
+    .lang-tab {
+        font-size: 1rem;
+    }
+}
