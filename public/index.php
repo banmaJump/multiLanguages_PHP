@@ -1,11 +1,15 @@
 <?php
-// lang-data.php の読み込み
 include 'lang-data.php';
 
-// 言語パラメータを取得（デフォルトは日本語）
-$lang = isset($_GET['lang']) && array_key_exists($_GET['lang'], $langData) ? $_GET['lang'] : 'ja';
+// クエリで言語指定がある場合はそれを優先
+if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $langData)) {
+    $lang = $_GET['lang'];
+} else {
+    $browserLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
-// 言語に対応するデータを取得
+    $lang = array_key_exists($browserLang, $langData) ? $browserLang : 'en';
+}
+
 $selectedLangData = $langData[$lang];
 ?>
 
@@ -69,18 +73,21 @@ $selectedLangData = $langData[$lang];
         <!-- メッセージ部分➁ -->
         <div class="footer">
             <div class="foo-h1">
-                <h1>【&nbsp;私のプロジェクト&nbsp;】</h1>
+                <h1>【&nbsp;過去のプロジェクト&nbsp;】</h1>
             </div>
             <div class="homePages">
                 <ul>
                     <li>
-                        <a href="https://official-alpha-weld.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-square-caret-up"></i>&nbsp;&nbsp;&nbsp;斑馬公式サイト--Vercel</a>
+                        <a href="https://official-alpha-weld.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-square-caret-up"></i>&nbsp;&nbsp;&nbsp;開発者の公式サイト</a>
                     </li>
                     <li>
-                        <a href="https://taz-bones.onrender.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cube"></i>&nbsp;&nbsp;&nbsp;たず旅--Render</a>
+                        <a href="https://taz-bones.onrender.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cube"></i>&nbsp;&nbsp;&nbsp;友人のホームページ</a>
                     </li>
                     <li>
-                        <a href="https://github.com/banmaJump?tab=repositories" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;&nbsp;その他のプロジェクト--GitHub</a>
+                        <a href="https://tsp-frontend-6I08.onrender.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;&nbsp;GoogleMapで最適デートプランを決める</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/banmaJump?tab=repositories" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;&nbsp;その他のプロジェクト</a>
                     </li>
                 </ul>
             </div>

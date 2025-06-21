@@ -1,3 +1,8 @@
+::selection {
+    background: #ffb3b3;
+    color: #000; 
+}
+
 body {
     margin: 0;
     background-color: white;
@@ -131,6 +136,10 @@ body {
     text-decoration: none;
     color: white;
     display: block;
+}
+
+.homePages li a:hover {
+    color: coral;
 }
 
 
